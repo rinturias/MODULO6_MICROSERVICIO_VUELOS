@@ -25,6 +25,10 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
 
                 Console.Write("INTERACCION DE COLA" + request);
 
+                //foreach (var item in request.Detalle.tripulaciones) {
+                //    objVuelo.AgregarItem(item.codTripulacion, item.codEmpleado, item.estado, item.activo);
+                //}
+
                 await _unitOfWork.Commit();
 
                 return new ResulService { messaje = "tripulacion creado el vuelo" };

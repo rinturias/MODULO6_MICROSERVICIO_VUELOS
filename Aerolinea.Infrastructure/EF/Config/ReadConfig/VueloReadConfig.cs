@@ -46,11 +46,24 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.ReadConfig {
           .HasColumnName("activo");
 
             builder.Property(x => x.stockAsientos)
-      .HasColumnName("stockAsientos");
+         .HasColumnName("stockAsientos");
+
+            builder.Property(x => x.codGrupoTripulacion)
+            .HasColumnName("codGrupoTripulacion");
 
 
-            builder.HasMany(x => x.DetalleTripulacion)
-              .WithOne(x => x.vuelo);
+            builder.Property(x => x.horaConcluido)
+          .HasColumnName("horaConcluido")
+           .HasMaxLength(20);
+
+
+            builder.Property(x => x.fechaConcluido)
+                 .HasColumnName("fechaConcluido")
+                  .HasMaxLength(20);
+
+
+            //builder.HasMany(x => x.DetalleTripulacion)
+            //  .WithOne(x => x.vuelo);
 
 
             // builder.HasMany(x => x.detallePlanillaVuelo)

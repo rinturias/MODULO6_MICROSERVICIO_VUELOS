@@ -18,6 +18,11 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.WriteConfig {
            .HasColumnName("estado")
            .HasMaxLength(1);
 
+            builder.Property(x => x.descripcion)
+           .HasColumnName("descripcion")
+           .HasMaxLength(300);
+
+
             builder.Property(x => x.activo)
            .HasColumnName("activo");
 

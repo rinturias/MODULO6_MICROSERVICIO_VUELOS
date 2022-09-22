@@ -18,6 +18,10 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.ReadConfig {
            .HasColumnName("estado")
            .HasMaxLength(1);
 
+            builder.Property(x => x.descripcion)
+           .HasColumnName("descripcion")
+           .HasMaxLength(300);
+
             builder.Property(x => x.activo)
            .HasColumnName("activo");
 

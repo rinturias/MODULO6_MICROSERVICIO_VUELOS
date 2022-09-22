@@ -66,7 +66,7 @@ namespace Aerolinea.Vuelos.Test.Application.UseCases.Handler.Vuelos {
 
             ResulService result = await objHandler.Handle(objRequest, tcs.Token);
 
-            _vueloTest.AgregarItem(objVuelosTest.tripulaciones[0].codTripulacion, objVuelosTest.tripulaciones[0].codEmpleado, objVuelosTest.tripulaciones[0].estado, objVuelosTest.tripulaciones[0].activo);
+            //_vueloTest.AgregarItem(objVuelosTest.tripulaciones[0].codTripulacion, objVuelosTest.tripulaciones[0].codEmpleado, objVuelosTest.tripulaciones[0].estado, objVuelosTest.tripulaciones[0].activo);
             _vueloTest.ConsolidarEventVueloHabilitado();
             //_unitOfWork.Verify(mock => mock.Commit(), Times.Once);            
 

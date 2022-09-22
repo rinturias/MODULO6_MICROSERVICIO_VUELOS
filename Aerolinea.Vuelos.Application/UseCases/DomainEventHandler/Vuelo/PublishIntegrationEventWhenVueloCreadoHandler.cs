@@ -23,7 +23,7 @@ namespace Aerolinea.Vuelos.Application.UseCases.DomainEventHandler.Vuelo {
                 fecha = notification.DomainEvent.vueloHabilitado.fecha,
                 horaLLegada = notification.DomainEvent.vueloHabilitado.horaLLegada,
                 horaSalida = notification.DomainEvent.vueloHabilitado.horaSalida,
-                estado=notification.DomainEvent.vueloHabilitado.estado,
+                estado = notification.DomainEvent.vueloHabilitado.estado,
             };
             await _publishEndpoint.Publish<Sharedkernel.IntegrationEvents.VueloHabilitado>(evento);
 

@@ -50,9 +50,18 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.WriteConfig {
               .HasColumnType("DateTime");
 
 
+            builder.Property(x => x.horaConcluido)
+                 .HasColumnName("horaConcluido")
+                  .HasMaxLength(20);
+
+
+            builder.Property(x => x.fechaConcluido)
+                 .HasColumnName("fechaConcluido")
+                  .HasMaxLength(20);
+
+
             builder.Property(x => x.codRuta)
                  .HasColumnName("codRuta");
-
 
 
             builder.Property(x => x.codAeronave)
@@ -71,7 +80,10 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.WriteConfig {
                .HasColumnName("stockAsientos");
 
 
-            builder.HasMany(typeof(TripulacionVuelo), "tripulacionVuelos");
+            builder.Property(x => x.codGrupoTripulacion)
+               .HasColumnName("codGrupoTripulacion");
+
+            //builder.HasMany(typeof(TripulacionVuelo), "tripulacionVuelos");
 
 
 
@@ -80,7 +92,7 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.WriteConfig {
 
             builder.Ignore("_domainEvents");
             builder.Ignore(x => x.DomainEvents);
-            builder.Ignore(x => x.DetalleTripilacionVuelos);
+            //builder.Ignore(x => x.DetalleTripilacionVuelos);
             // builder.Ignore("VueloId1");
 
         }

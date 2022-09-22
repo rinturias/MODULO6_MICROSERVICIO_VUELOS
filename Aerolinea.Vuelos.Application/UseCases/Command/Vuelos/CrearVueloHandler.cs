@@ -26,14 +26,12 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
         public async Task<ResulService> Handle(CrearVuelosCommand request, CancellationToken cancellationToken) {
 
             try {
-
+                int codEstadoActivo = 0;
 
                 Vuelo objVuelo = _vuelosFactory.Create(request.Detalle.horaSalida, request.Detalle.horaLLegada, request.Detalle.estado, request.Detalle.precio, request.Detalle.fecha,
-                 request.Detalle.codRuta, request.Detalle.codAeronave, request.Detalle.activo, request.Detalle.StockAsientos);
+                 request.Detalle.codRuta, request.Detalle.codAeronave, codEstadoActivo, request.Detalle.StockAsientos);
 
-                foreach (var item in request.Detalle.tripulaciones) {
-                    objVuelo.AgregarItem(item.codTripulacion, item.codEmpleado, item.estado, item.activo);
-                }
+
 
                 objVuelo.ConsolidarEventVueloHabilitado();
 

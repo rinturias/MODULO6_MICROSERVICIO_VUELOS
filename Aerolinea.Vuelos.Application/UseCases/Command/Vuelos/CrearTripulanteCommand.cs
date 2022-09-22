@@ -6,10 +6,10 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
     public class CrearTripulanteCommand : IRequest<ResulService> {
         private CrearTripulanteCommand() { }
 
-        public CrearTripulanteCommand(TripulacionDto detalle) {
+        public CrearTripulanteCommand(TripulacionVueloDto detalle) {
             Detalle = detalle;
         }
 
-        public TripulacionDto Detalle { get; set; }
+        public TripulacionVueloDto Detalle { get; set; }
     }
 }

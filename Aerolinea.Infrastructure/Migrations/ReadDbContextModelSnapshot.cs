@@ -37,6 +37,11 @@ namespace Aerolinea.Vuelos.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("codTripulacion");
 
+                    b.Property<string>("descripcion")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)")
+                        .HasColumnName("descripcion");
+
                     b.Property<string>("estado")
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)")
@@ -66,6 +71,10 @@ namespace Aerolinea.Vuelos.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("codAeronave");
 
+                    b.Property<string>("codGrupoTripulacion")
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("codGrupoTripulacion");
+
                     b.Property<Guid>("codRuta")
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("codRuta");
@@ -78,6 +87,16 @@ namespace Aerolinea.Vuelos.Infrastructure.Migrations
                     b.Property<DateTime>("fecha")
                         .HasColumnType("DateTime")
                         .HasColumnName("fecha");
+
+                    b.Property<string>("fechaConcluido")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("fechaConcluido");
+
+                    b.Property<string>("horaConcluido")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)")
+                        .HasColumnName("horaConcluido");
 
                     b.Property<DateTime>("horaLLegada")
                         .HasColumnType("DateTime")

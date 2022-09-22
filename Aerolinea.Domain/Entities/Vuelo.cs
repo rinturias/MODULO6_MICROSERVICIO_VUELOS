@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using Aerolinea.Vuelos.Domain.Event;
 using Aerolinea.Vuelos.Domain.ValueObjects;
 using Sharedkernel.Core;
@@ -11,6 +8,9 @@ namespace Aerolinea.Vuelos.Domain.Entities {
 
         public DateTime horaSalida { get; private set; }
         public DateTime horaLLegada { get; private set; }
+
+        public string? horaConcluido { get; private set; }
+        public string? fechaConcluido { get; private set; }
         public string estado { get; private set; }
         public PrecioValue precio { get; private set; }
         public DateTime fecha { get; private set; }
@@ -19,27 +19,29 @@ namespace Aerolinea.Vuelos.Domain.Entities {
         public int activo { get; private set; }
         public CantidadValue stockAsientos { get; set; }
 
+        public string? codGrupoTripulacion { get; set; }
 
 
-        private readonly ICollection<TripulacionVuelo> tripulacionVuelos;
 
-        public IReadOnlyCollection<TripulacionVuelo> DetalleTripilacionVuelos {
-            get {
-                return new ReadOnlyCollection<TripulacionVuelo>(tripulacionVuelos.ToList());
-            }
-        }
+        //private readonly ICollection<TripulacionVuelo> tripulacionVuelos;
+
+        //public IReadOnlyCollection<TripulacionVuelo> DetalleTripilacionVuelos {
+        //    get {
+        //        return new ReadOnlyCollection<TripulacionVuelo>(tripulacionVuelos.ToList());
+        //    }
+        //}
 
 
 
 
         public Vuelo() {
             Id = Guid.NewGuid();
-            this.tripulacionVuelos = new List<TripulacionVuelo>();
+            //this.tripulacionVuelos = new List<TripulacionVuelo>();
         }
 
         public Vuelo(DateTime horaSalida, DateTime horaLLegada, string estado, PrecioValue precio, DateTime fecha, Guid codRuta, Guid codAeronave, int activo, CantidadValue StockAsientos) {
             Id = Guid.NewGuid();
-            this.tripulacionVuelos = new List<TripulacionVuelo>();
+            //this.tripulacionVuelos = new List<TripulacionVuelo>();
 
             this.estado = estado;
             this.precio = precio;
@@ -56,22 +58,6 @@ namespace Aerolinea.Vuelos.Domain.Entities {
         }
 
 
-        public void AgregarItem(Guid codTripulacion, Guid codEmpleado, string estadoTri, int activoTri) {
-
-            var detalleTripulacion = tripulacionVuelos.FirstOrDefault(x => x.codTripulacion == codTripulacion);
-            if (detalleTripulacion is null) {
-                detalleTripulacion = new TripulacionVuelo(codTripulacion, codEmpleado, estadoTri, activoTri, Id);
-                tripulacionVuelos.Add(detalleTripulacion);
-            }
-            else {
-                detalleTripulacion.ModificarTripulacionVuelo(estadoTri, activoTri);
-            }
-
-
-            //AddDomainEvent(new VueloHabilitado(this, DateTime.Now));
-
-        }
-
 
 
         public void ConsolidarEventVueloHabilitado() {
@@ -86,7 +72,7 @@ namespace Aerolinea.Vuelos.Domain.Entities {
         }
 
         public void CloncluirVuelo(Guid pCodVuelo, string pEstado) {
-            var evento = new VueloConcluido(this);
+            var evento = new VueloConcluido(this, DateTime.Now);
             Id = pCodVuelo;
             estado = pEstado;
             AddDomainEvent(evento);

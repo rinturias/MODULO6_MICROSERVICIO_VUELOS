@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Aerolinea.Vuelos.Application.Dto;
-using Aerolinea.Vuelos.Application.Dto.Tripulantes;
 
 namespace Aerolinea.Vuelos.Test.Application {
     public class MockFactory {
@@ -15,22 +13,21 @@ namespace Aerolinea.Vuelos.Test.Application {
                 StockAsientos = 10,
                 fecha = DateTime.Now,
                 codRuta = Guid.NewGuid(),
-                codAeronave = Guid.NewGuid(),
-                activo = 0,
-                tripulaciones = new List<TripulacionDto> { new TripulacionDto()
-                {
-                    codVuelo=Guid.NewGuid(),
-                    codTripulacion=Guid.NewGuid(),
-                    codEmpleado=Guid.NewGuid(),
-                    estado="A",
-                    activo=0
-                }
-
-                }
-
+                codAeronave = Guid.NewGuid()
+                //activo = 0,
+                //tripulaciones = new List<TripulacionDto> { new TripulacionDto()
+                //{
+                //    codVuelo=Guid.NewGuid(),
+                //    codTripulacion=Guid.NewGuid(),
+                //    codEmpleado=Guid.NewGuid(),
+                //    estado="A",
+                //    activo=0
+                //}
 
             };
+
         }
+
 
         public static SearchVuelosDTO GetSearchVuelo() {
             return new SearchVuelosDTO() {

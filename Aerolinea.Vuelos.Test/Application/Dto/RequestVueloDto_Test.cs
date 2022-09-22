@@ -32,7 +32,7 @@ namespace Aerolinea.Vuelos.Test.Application.Dto {
 
             Assert.Equal(Guid.Empty, objRequestVuelo.codRuta);
             Assert.Equal(Guid.Empty, objRequestVuelo.codAeronave);
-            Assert.Null(objRequestVuelo.tripulaciones);
+            //Assert.Null(objRequestVuelo.tripulaciones);
 
 
 
@@ -45,8 +45,8 @@ namespace Aerolinea.Vuelos.Test.Application.Dto {
 
             objRequestVuelo.codRuta = codRuta;
             objRequestVuelo.codAeronave = codAeronaveTest;
-            objRequestVuelo.activo = activoTest;
-            objRequestVuelo.tripulaciones = detalletripulacionesTest;
+            //objRequestVuelo.activo = activoTest;
+            //objRequestVuelo.tripulaciones = detalletripulacionesTest;
 
 
 
@@ -58,8 +58,8 @@ namespace Aerolinea.Vuelos.Test.Application.Dto {
             Assert.Equal(fechaTest, objRequestVuelo.fecha);
             Assert.Equal(codRuta, objRequestVuelo.codRuta);
             Assert.Equal(codAeronaveTest, objRequestVuelo.codAeronave);
-            Assert.Equal(activoTest, objRequestVuelo.activo);
-            Assert.Equal(detalletripulacionesTest.Count, objRequestVuelo.tripulaciones.Count);
+            //Assert.Equal(activoTest, objRequestVuelo.activo);
+            //Assert.Equal(detalletripulacionesTest.Count, objRequestVuelo.tripulaciones.Count);
 
 
         }

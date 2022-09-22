@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Aerolinea.Vuelos.Application.Dto.Tripulantes;
 
 namespace Aerolinea.Vuelos.Application.Dto {
     public class RequestVueloDto {
@@ -12,8 +10,8 @@ namespace Aerolinea.Vuelos.Application.Dto {
         public DateTime fecha { get; set; }
         public Guid codRuta { get; set; }
         public Guid codAeronave { get; set; }
-        public int activo { get; set; }
+        //public int activo { get; set; }
 
-        public List<TripulacionDto> tripulaciones { get; set; }
+        //public List<TripulacionDto> tripulaciones { get; set; }
     }
 }

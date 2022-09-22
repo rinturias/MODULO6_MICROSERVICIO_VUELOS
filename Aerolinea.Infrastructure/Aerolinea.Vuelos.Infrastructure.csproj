@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\..\..\..\..\EF\Migrations\20220922123124_InitialStructure.cs" Link="20220922123124_InitialStructure.cs" />
+    <Compile Include="..\..\..\..\..\..\EF\Migrations\20220922123124_InitialStructure.Designer.cs" Link="20220922123124_InitialStructure.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.7-develop.580" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />

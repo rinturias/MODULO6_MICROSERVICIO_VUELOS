@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using Sharedkernel.Core;
+using Sharedkernel.Entidades;
 
 namespace Sharedkernel.IntegrationEvents {
     public record TripulacionCreado : IntegrationEvent {
+
+        public Guid IdGrupo { get; set; }
         public Guid vueloId { get; set; }
-        public Guid codTripulacion { get; set; }
-        public Guid codEmpleado { get; set; }
-        public string estado { get; set; }
-        public int activo { get; set; }
+        public ICollection<Tripulacion> tripulacionVuelos { get; set; }
     }
 }
