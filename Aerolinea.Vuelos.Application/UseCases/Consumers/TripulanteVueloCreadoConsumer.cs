@@ -9,7 +9,7 @@ namespace Aerolinea.Vuelos.Application.UseCases.Consumers {
     public class TripulanteVueloCreadoConsumer : IConsumer<TripulacionCreado> {
         private readonly IMediator _mediator;
         public const string ExchangeName = "tripulacion-creado-exchange";
-        public const string QueueName = "TripulanteVueloCreado";
+        public const string QueueName = "TripulacionCreado";
 
         public TripulanteVueloCreadoConsumer(IMediator mediator) {
             _mediator = mediator;
