@@ -86,7 +86,7 @@ namespace Aerolinea.Vuelos.Domain.Entities {
         }
 
         public void CloncluirVuelo(Guid pCodVuelo, string pEstado) {
-            var evento = new VueloConcluido(this);
+            var evento = new VueloConcluido(this,DateTime.Now);
             Id = pCodVuelo;
             estado = pEstado;
             AddDomainEvent(evento);

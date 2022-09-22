@@ -8,7 +8,7 @@ using Sharedkernel.IntegrationEvents;
 namespace Aerolinea.Vuelos.Application.UseCases.Consumers {
     public class TripulanteVueloCreadoConsumer : IConsumer<TripulacionCreado> {
         private readonly IMediator _mediator;
-        public const string ExchangeName = "tripulacion-creado-exchange";
+        public const string ExchangeName = "IntegrationEvents-TripulacionCreado";
         public const string QueueName = "TripulanteVueloCreado";
 
         public TripulanteVueloCreadoConsumer(IMediator mediator) {
