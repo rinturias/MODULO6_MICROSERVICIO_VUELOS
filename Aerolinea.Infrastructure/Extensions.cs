@@ -26,6 +26,8 @@ namespace Aerolinea.Vuelos.Infrastructure {
 
 
             services.AddScoped<IVueloRepository, VueloRepository>();
+            services.AddScoped<ITripulacionVueloRepository, TripulacionVueloRepository>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             AddRabbitMq(services, configuration);
 

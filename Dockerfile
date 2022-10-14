@@ -1,14 +1,24 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-end
-WORKDIR /app
+FROM centos:7 AS base
 
+# Add Microsoft package repository and install ASP.NET Core
+RUN rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm \
+    && yum install -y aspnetcore-runtime-5.0
+
+# Ensure we listen on any IP Address 
+ENV DOTNET_URLS=http://+:5000
+
+WORKDIR /app
+# ... remainder of dockerfile as before
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 COPY . .
 RUN dotnet restore 
 RUN dotnet publish ./Aerolinea.Vuelos.Api/Aerolinea.Vuelos.Api.csproj -c Release -o  /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0
-EXPOSE 8080
-ENV ASPNETCORE_URLS=http://*:8080
-ENV ASPNETCORE_ENVIRONMENT=docker
-COPY --from=build-end /app/publish .  
+FROM build AS publish
+RUN dotnet publish -c Release -o /app/publish
 
+FROM base AS final
+WORKDIR /app
+# ENV ASPNETCORE_ENVIRONMENT=docker
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Aerolinea.Vuelos.Api.dll"]

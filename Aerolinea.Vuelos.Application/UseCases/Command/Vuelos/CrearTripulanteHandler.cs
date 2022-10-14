@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AAerolinea.Vuelos.Domain.Interfaces;
 using Aerolinea.Vuelos.Application.Dto;
+using Aerolinea.Vuelos.Domain.Entities;
 using Aerolinea.Vuelos.Domain.Interfaces;
 using MediatR;
 
@@ -11,10 +12,12 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
 
         public readonly IUnitOfWork _unitOfWork;
         public readonly IVueloRepository _vueloRepository;
-        public CrearTripulanteHandler(IUnitOfWork unitOfWork, IVueloRepository vueloRepository) {
+        public readonly ITripulacionVueloRepository _tripulacionVuelo;
+        public CrearTripulanteHandler(IUnitOfWork unitOfWork, IVueloRepository vueloRepository, ITripulacionVueloRepository tripulacionVuelo) {
 
             _unitOfWork = unitOfWork;
             _vueloRepository = vueloRepository;
+            _tripulacionVuelo = tripulacionVuelo;
         }
 
 
@@ -23,11 +26,27 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
             try {
 
 
-                Console.Write("INTERACCION DE COLA" + request);
+                TripulacionVuelo ObjTripulante = new(request.Detalle.vueloId, request.Detalle.IdGrupo);
 
-                //foreach (var item in request.Detalle.tripulaciones) {
-                //    objVuelo.AgregarItem(item.codTripulacion, item.codEmpleado, item.estado, item.activo);
-                //}
+                foreach (var item in request.Detalle.tripulacionVuelos) {
+                    ObjTripulante.AgregarItem(item.codTripulacion, item.codEmpleado, item.estado, item.activo, request.Detalle.vueloId, request.Detalle.IdGrupo);
+                }
+
+                //ObjTripulante.ConsolidarTripulantes(request.Detalle.vueloId);
+
+                await _tripulacionVuelo.CreateAsync(ObjTripulante);
+
+                Vuelo objVuelo = await _vueloRepository.FindByIdAsync(request.Detalle.vueloId);
+
+                if (objVuelo != null) {
+
+                    objVuelo.ActualizarGrupoTripulanteVuelo(objVuelo.Id, request.Detalle.IdGrupo);
+                    await _vueloRepository.UpdateAsync(objVuelo);
+                }
+                else {
+                    return new ResulService { codError = "COD403", messaje = "No existe el vuelo" };
+                }
+
 
                 await _unitOfWork.Commit();
 

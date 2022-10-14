@@ -62,6 +62,8 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.ReadConfig {
                   .HasMaxLength(20);
 
 
+            builder.Ignore("_domainEvents");
+
             //builder.HasMany(x => x.DetalleTripulacion)
             //  .WithOne(x => x.vuelo);
 

@@ -24,7 +24,8 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Contexts {
 
             modelBuilder.Ignore<DomainEvent>();
             modelBuilder.Ignore<VueloHabilitado>();
-            //modelBuilder.Ignore<ItemPedidoAgregado>();
+            modelBuilder.Ignore<TripulanteAsignado>();
+            modelBuilder.Ignore<VueloConcluido>();
         }
 
     }

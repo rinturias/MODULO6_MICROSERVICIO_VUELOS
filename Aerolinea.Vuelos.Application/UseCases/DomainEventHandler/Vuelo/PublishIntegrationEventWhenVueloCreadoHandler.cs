@@ -18,6 +18,7 @@ namespace Aerolinea.Vuelos.Application.UseCases.DomainEventHandler.Vuelo {
             Sharedkernel.IntegrationEvents.VueloHabilitado evento = new Sharedkernel.IntegrationEvents.VueloHabilitado() {
                 vueloId = notification.DomainEvent.vueloHabilitado.Id,
                 codAeronave = notification.DomainEvent.vueloHabilitado.codAeronave,
+                codRuta = notification.DomainEvent.vueloHabilitado.codRuta,
                 precio = notification.DomainEvent.vueloHabilitado.precio.Value,
                 stockAsientos = notification.DomainEvent.vueloHabilitado.stockAsientos,
                 fecha = notification.DomainEvent.vueloHabilitado.fecha,

@@ -71,11 +71,18 @@ namespace Aerolinea.Vuelos.Domain.Entities {
             AddDomainEvent(evento);
         }
 
+        public void ActualizarGrupoTripulanteVuelo(Guid codVuelo, string pCodGrupoTripulantes) {
+            var evento = new VueloTripulantesAsignados(this, DateTime.Now);
+            codGrupoTripulacion = pCodGrupoTripulantes;
+            AddDomainEvent(evento);
+        }
         public void CloncluirVuelo(Guid pCodVuelo, string pEstado) {
             var evento = new VueloConcluido(this, DateTime.Now);
             Id = pCodVuelo;
             estado = pEstado;
             AddDomainEvent(evento);
         }
+
+
     }
 }

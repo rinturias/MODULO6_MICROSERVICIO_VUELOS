@@ -25,7 +25,10 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.ReadConfig {
             builder.Property(x => x.activo)
            .HasColumnName("activo");
 
+            builder.Property(x => x.codGrupo)
+           .HasColumnName("codGrupo");
 
+            builder.Ignore("_domainEvents");
         }
     }
 }

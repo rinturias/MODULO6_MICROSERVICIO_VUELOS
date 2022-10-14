@@ -18,8 +18,10 @@ namespace Aerolinea.Vuelos.Infrastructure.Repositories {
         }
 
         public async Task<Vuelo> FindByIdAsync(Guid id) {
-            return await _vuelos.Include("tripulacionVuelos")
-                      .SingleOrDefaultAsync(x => x.Id == id && x.activo == 0);
+            //return await _vuelos.Include("tripulacionVuelos")
+            //          .SingleOrDefaultAsync(x => x.Id == id && x.activo == 0);
+            return await _vuelos
+                .SingleOrDefaultAsync(x => x.Id == id && x.activo == 0);
         }
 
 

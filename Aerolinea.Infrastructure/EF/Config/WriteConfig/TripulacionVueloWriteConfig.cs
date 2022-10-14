@@ -18,24 +18,29 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.WriteConfig {
            .HasColumnName("estado")
            .HasMaxLength(1);
 
+            builder.Property(x => x.activo)
+         .HasColumnName("activo");
+
             builder.Property(x => x.descripcion)
            .HasColumnName("descripcion")
            .HasMaxLength(300);
 
+            builder.Property(x => x.codGrupo)
+           .HasColumnName("codGrupo");
 
-            builder.Property(x => x.activo)
-           .HasColumnName("activo");
+
 
 
             builder.Ignore("_domainEvents");
             builder.Ignore(x => x.DomainEvents);
+
+            builder.Ignore(x => x.DetalleTripilacionVuelos);
 
             // builder.Property(x => x.vueloId)
             //.HasColumnName("vueloId");
 
 
 
-            //  builder.Ignore("VueloId1");
 
         }
     }
