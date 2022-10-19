@@ -2,7 +2,7 @@
 using Aerolinea.Vuelos.Application.Dto.Tripulantes;
 using MediatR;
 
-namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
+namespace Aerolinea.Vuelos.Application.UseCases.Command.Tripulantes {
     public class CrearTripulanteCommand : IRequest<ResulService> {
         private CrearTripulanteCommand() { }
 

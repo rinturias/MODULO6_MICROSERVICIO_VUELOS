@@ -54,16 +54,7 @@ namespace Aerolinea.Vuelos.Api.Controllers {
             }
         }
 
-        //[HttpPost("SearchPlanillaAsientosVuelosByDay")]
-        //public async Task<IActionResult> SearchPlanillaAsientosVuelosByDay([FromBody] SearchListPlanillaAsientosVuelosQuery query) {
-        //    try {
-        //        return Ok(await _mediator.Send(query));
-        //    }
-        //    catch (Exception ex) {
 
-        //        return BadRequest(new ResulService() { success = false, codError = "501", messaje = "Error en la solicitud", error = ex.Message });
-        //    }
-        //}
 
         [HttpPut("ModifyVuelos")]
         public async Task<IActionResult> ModifyVuelos([FromBody] CrearVuelosCommand command) {

@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Aerolinea.Domain\Aerolinea.Vuelos.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Consumers\" />
-  </ItemGroup>
-
 </Project>

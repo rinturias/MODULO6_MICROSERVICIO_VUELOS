@@ -8,25 +8,25 @@ using Aerolinea.Vuelos.Domain.Interfaces;
 using MediatR;
 
 namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
-    public class EliminarVueloHandler : IRequestHandler<EliminarVueloCommand, ResulService> {
+    public class ActivarVueloHandler : IRequestHandler<ActivarVueloCommand, ResulService> {
 
 
         public readonly IUnitOfWork _unitOfWork;
         public readonly IVueloRepository _vueloRepository;
-        public EliminarVueloHandler(IUnitOfWork unitOfWork, IVueloRepository vueloRepository) {
+        public ActivarVueloHandler(IUnitOfWork unitOfWork, IVueloRepository vueloRepository) {
             _unitOfWork = unitOfWork;
             _vueloRepository = vueloRepository;
         }
 
-        public async Task<ResulService> Handle(EliminarVueloCommand request, CancellationToken cancellationToken) {
+        public async Task<ResulService> Handle(ActivarVueloCommand request, CancellationToken cancellationToken) {
 
             try {
-                int codMarcaBaja = 9;
+                int codMarcaAlta = 0;
                 Vuelo objVuelo = await _vueloRepository.FindByIdAsync(request.Detalle.idVuelo);
 
                 if (objVuelo != null) {
 
-                    objVuelo.EliminarVuelo(objVuelo.Id, codMarcaBaja);
+                    objVuelo.ActivaVuelo(objVuelo.Id, codMarcaAlta);
                     await _vueloRepository.UpdateAsync(objVuelo);
                 }
                 else {
@@ -36,13 +36,12 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
 
                 await _unitOfWork.Commit();
 
-                return new ResulService { data = objVuelo.Id, messaje = "se elimino el vuelo" };
+                return new ResulService { data = objVuelo.Id, messaje = "se activo el vuelo" };
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.ToString());
-
             }
-            return new ResulService { success = false, codError = "COD501", messaje = "ERROR crear al crear vuelo" };
+            return new ResulService { success = false, codError = "COD501", messaje = "ERROR activar el vuelo" };
 
         }
 

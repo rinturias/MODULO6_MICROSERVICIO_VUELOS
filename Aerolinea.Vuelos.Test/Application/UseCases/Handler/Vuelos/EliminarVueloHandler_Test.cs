@@ -26,7 +26,7 @@ namespace Aerolinea.Vuelos.Test.Application.UseCases.Handler.Vuelos {
         private int activo = 0;
 
         private VueloDeleteDto objVuelosDeleteDto = new() {
-            codVuelo = Guid.Parse("D6065F05-533F-4C4A-81B4-09561258CD43")
+            idVuelo = Guid.Parse("D6065F05-533F-4C4A-81B4-09561258CD43")
         };
         private Vuelo _vueloTest;
         public EliminarVueloHandler_Test() {
@@ -44,7 +44,7 @@ namespace Aerolinea.Vuelos.Test.Application.UseCases.Handler.Vuelos {
 
 
 
-            _vueloRepository.Setup(_vuelosFactory => _vuelosFactory.FindByIdAsync(objVuelosDeleteDto.codVuelo)).ReturnsAsync(_vueloTest);
+            _vueloRepository.Setup(_vuelosFactory => _vuelosFactory.FindByIdAsync(objVuelosDeleteDto.idVuelo)).ReturnsAsync(_vueloTest);
 
 
             var objHandler = new EliminarVueloHandler(

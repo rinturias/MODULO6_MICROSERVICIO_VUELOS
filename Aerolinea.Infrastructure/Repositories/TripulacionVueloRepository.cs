@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Aerolinea.Vuelos.Domain.Entities;
 using Aerolinea.Vuelos.Domain.Interfaces;
@@ -19,6 +20,11 @@ namespace Aerolinea.Vuelos.Infrastructure.Repositories {
 
         public Task<TripulacionVuelo> FindByIdAsync(Guid id) {
             throw new NotImplementedException();
+        }
+
+        public async Task<ICollection<TripulacionVuelo>> ListTripulantes(String codGrupoTripulante) {
+            return (ICollection<TripulacionVuelo>)await _tripulacion
+               .SingleOrDefaultAsync(x => x.codGrupo == codGrupoTripulante && x.activo == 0);
         }
 
         public Task UpdateAsync(TripulacionVuelo obj) {

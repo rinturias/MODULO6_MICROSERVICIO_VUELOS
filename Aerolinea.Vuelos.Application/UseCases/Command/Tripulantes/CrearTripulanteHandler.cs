@@ -7,7 +7,7 @@ using Aerolinea.Vuelos.Domain.Entities;
 using Aerolinea.Vuelos.Domain.Interfaces;
 using MediatR;
 
-namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
+namespace Aerolinea.Vuelos.Application.UseCases.Command.Tripulantes {
     public class CrearTripulanteHandler : IRequestHandler<CrearTripulanteCommand, ResulService> {
 
         public readonly IUnitOfWork _unitOfWork;
@@ -30,11 +30,13 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {
 
                 foreach (var item in request.Detalle.tripulacionVuelos) {
                     ObjTripulante.AgregarItem(item.codTripulacion, item.codEmpleado, item.estado, item.activo, request.Detalle.vueloId, request.Detalle.IdGrupo);
+
+
+
                 }
 
-                //ObjTripulante.ConsolidarTripulantes(request.Detalle.vueloId);
-
                 await _tripulacionVuelo.CreateAsync(ObjTripulante);
+                //ObjTripulante.ConsolidarTripulantes(request.Detalle.vueloId);
 
                 Vuelo objVuelo = await _vueloRepository.FindByIdAsync(request.Detalle.vueloId);
 

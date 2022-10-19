@@ -7,17 +7,17 @@ using MediatR;
 using Sharedkernel.IntegrationEvents;
 
 namespace Aerolinea.Vuelos.Application.UseCases.Consumers {
-    public class TripulanteVueloCreadoConsumer : IConsumer<TripulacionCreado> {
+    public class TripulanteVueloModificadoConsumer : IConsumer<TripulacionModificado> {
         private readonly IMediator _mediator;
-        public const string ExchangeName = "tripulacion-creado-exchange";
-        public const string QueueName = "tripulacion-creado-empleado";
+        public const string ExchangeName = "tripulacion-modificado-exchange";
+        public const string QueueName = "tripulacion-modificado-empleado";
 
-        public TripulanteVueloCreadoConsumer(IMediator mediator) {
+        public TripulanteVueloModificadoConsumer(IMediator mediator) {
             _mediator = mediator;
         }
 
-        public async Task Consume(ConsumeContext<TripulacionCreado> context) {
-            TripulacionCreado @event = context.Message;
+        public async Task Consume(ConsumeContext<TripulacionModificado> context) {
+            TripulacionModificado @event = context.Message;
             ICollection<TripulacionDto> tripulacionVuelos = new List<TripulacionDto>();
 
             foreach (var item in @event.tripulacionVuelos) {
@@ -39,7 +39,7 @@ namespace Aerolinea.Vuelos.Application.UseCases.Consumers {
 
             };
 
-            CrearTripulanteCommand command = new CrearTripulanteCommand(tripulacionDto);
+            ModificarTripulanteCommand command = new ModificarTripulanteCommand(tripulacionDto);
 
             await _mediator.Send(command);
 
