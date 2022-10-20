@@ -9,7 +9,7 @@ namespace Aerolinea.Vuelos.Test.Application.Dto {
             var codVueloTest = Guid.NewGuid();
             var objVuelo = new VueloDeleteDto();
 
-            Assert.Equal(Guid.Empty, objVuelo.codVuelo);
+            Assert.Equal(Guid.Empty, objVuelo.idVuelo);
         }
     }
 }
