@@ -35,7 +35,7 @@ jobs:
             - name: 'Vulnerability scan container image with Trivy'
               uses: aquasecurity/trivy-action@master
               with:
-               image-ref: ${{ secrets.REGISTRY_LOGIN_SERVER }}/pwd9000-github-runner-lin:${{ env.RUNNER_VERSION }}
+               image-ref: ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
                format: 'sarif'
                output: 'trivy-results.sarif'
                severity: 'CRITICAL,HIGH'
@@ -51,5 +51,5 @@ jobs:
                login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
                username: ${{ secrets.REGISTRY_USERNAME }}
                password: ${{ secrets.REGISTRY_PASSWORD }}
-            - run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/pwd9000-github-runner-lin:${{ env.RUNNER_VERSION }}     
+            - run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}:${{ env.RUNNER_VERSION }}     
 
