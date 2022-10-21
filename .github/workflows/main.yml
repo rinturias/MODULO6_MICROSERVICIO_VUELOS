@@ -31,11 +31,11 @@ jobs:
                login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
                username: ${{ secrets.REGISTRY_USERNAME }}
                password: ${{ secrets.REGISTRY_PASSWORD }}
-            - run: docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+            - run: docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:latest
             - name: 'Vulnerability scan container image with Trivy'
               uses: aquasecurity/trivy-action@master
               with:
-               image-ref: ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}
+               image-ref: ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:latest
                format: 'sarif'
                output: 'trivy-results.sarif'
                severity: 'CRITICAL,HIGH'
@@ -51,5 +51,5 @@ jobs:
                login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
                username: ${{ secrets.REGISTRY_USERNAME }}
                password: ${{ secrets.REGISTRY_PASSWORD }}
-            - run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:${{ github.sha }}    
+            - run: docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sampleapp:latest    
 
