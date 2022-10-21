@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aerolinea.Vuelos.Application.Dto;
+﻿using Aerolinea.Vuelos.Application.Dto;
 using MediatR;
 
 namespace Aerolinea.Vuelos.Application.UseCases.Command.Vuelos {

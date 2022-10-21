@@ -74,7 +74,7 @@ namespace Aerolinea.Vuelos.Domain.Entities {
             estado = pEstado;
             AddDomainEvent(evento);
         }
-        public void ReprogramarVuelo(Guid codVuelo, DateTime horaSalida, DateTime horaLLegada,  DateTime fecha,  Guid codAeronave) {
+        public void ReprogramarVuelo(Guid codVuelo, DateTime horaSalida, DateTime horaLLegada, DateTime fecha, Guid codAeronave) {
             var evento = new VueloReprogramado(this, DateTime.Now);
             this.Id = codVuelo;
             this.horaSalida = horaSalida;

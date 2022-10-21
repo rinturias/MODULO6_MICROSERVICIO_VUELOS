@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Aerolinea.Vuelos.Application\Aerolinea.Vuelos.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Application\Services\" />
+  </ItemGroup>
+
 </Project>

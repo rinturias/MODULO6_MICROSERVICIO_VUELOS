@@ -34,10 +34,6 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Tripulantes {
 
                 ObjTripulante.ConsolidarTripulantes(request.Detalle.vueloId);
 
-                //ICollection<TripulacionVuelo> objList = new Collection<TripulacionVuelo>();
-                //TripulacionVuelo objPruebas = new TripulacionVuelo();
-                //objPruebas.codGrupo = request.Detalle.IdGrupo;
-
                 await _tripulacionVuelo.SaveDetalleAsync(ObjTripulante._tripulacionVuelos);
 
 

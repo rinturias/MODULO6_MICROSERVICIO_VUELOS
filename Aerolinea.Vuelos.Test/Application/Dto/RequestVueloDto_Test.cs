@@ -16,7 +16,7 @@ namespace Aerolinea.Vuelos.Test.Application.Dto {
             DateTime fechaTest = new DateTime();
 
             var codRuta = Guid.NewGuid();
-            var codAeronaveTest = Guid.NewGuid(); ;
+            var codAeronaveTest = Guid.NewGuid();
             var activoTest = 0;
 
             var detalletripulacionesTest = getDetalleTripulacion();

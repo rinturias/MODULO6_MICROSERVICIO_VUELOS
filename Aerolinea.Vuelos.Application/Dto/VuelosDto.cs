@@ -19,10 +19,6 @@ namespace Aerolinea.Vuelos.Application.Dto {
 
         public List<TripulacionDto> tripulaciones { get; set; }
 
-        public List<PlanillaAsientosVueloDto> planillaAsientoVuelo { get; set; }
-
-
-
 
     }
 }

@@ -26,7 +26,7 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Contexts {
             modelBuilder.Ignore<VueloHabilitado>();
             modelBuilder.Ignore<TripulanteAsignado>();
             modelBuilder.Ignore<VueloConcluido>();
-            modelBuilder.Ignore<ItemTripulanteAgregado>();
+
         }
     }
 }

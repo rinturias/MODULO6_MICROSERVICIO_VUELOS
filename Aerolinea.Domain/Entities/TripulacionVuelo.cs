@@ -45,12 +45,10 @@ namespace Aerolinea.Vuelos.Domain.Entities {
 
         internal TripulacionVuelo(Guid codTripulacion, Guid codEmpleado, string estado, int activo, Guid vueloId, string codGrupo) {
             Id = Guid.NewGuid();
-            //this.tripulacionVuelos = new List<TripulacionVuelo>();
             this.codTripulacion = codTripulacion;
             this.codEmpleado = codEmpleado;
             this.estado = estado;
             this.activo = activo;
-            //this.vueloId = vueloId;
             this.codGrupo = codGrupo;
         }
 
@@ -95,7 +93,7 @@ namespace Aerolinea.Vuelos.Domain.Entities {
             this.activo = activoTri;
             this.descripcion = descripcion;
             this.codGrupo = codGrupo;
-            var evento = new TripulacionVuelo(idTripulacion,  codTripulacion,  codEmpleado, estadoTri, activoTri,  vueloId,  codGrupo);
+            var evento = new TripulacionVuelo(idTripulacion, codTripulacion, codEmpleado, estadoTri, activoTri, vueloId, codGrupo);
             _tripulacionBajaVuelos.Add(evento);
 
         }

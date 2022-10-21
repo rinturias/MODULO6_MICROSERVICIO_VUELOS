@@ -8,5 +8,9 @@ namespace Sharedkernel.IntegrationEvents {
         public String IdGrupo { get; set; }
         public Guid vueloId { get; set; }
         public ICollection<Tripulacion> tripulacionVuelos { get; set; }
+
+        public TripulacionModificado() {
+
+        }
     }
 }
