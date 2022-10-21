@@ -79,6 +79,17 @@ namespace Aerolinea.Vuelos.Api.Controllers {
                 return BadRequest(new ResulService() { success = false, codError = "501", messaje = "Error en la solicitud", error = ex.Message });
             }
         }
+
+        [HttpPost("ReprogramarVuelo")]
+        public async Task<IActionResult> ReprogramarVuelo([FromBody] ReprogramarVueloCommand query) {
+            try {
+                return Ok(await _mediator.Send(query));
+            }
+            catch (Exception ex) {
+
+                return BadRequest(new ResulService() { success = false, codError = "501", messaje = "Error en la solicitud", error = ex.Message });
+            }
+        }
         //#######################ENDPOINT NEW####################
 
 

@@ -17,8 +17,7 @@ namespace Aerolinea.Vuelos.Infrastructure.EF {
         }
 
         public async Task Commit() {
-            //await _context.SaveChangesAsync();
-            //Publicar eventos de dominio
+
             var domainEvents = _context.ChangeTracker.Entries<Entity<Guid>>()
                 .Select(x => x.Entity.DomainEvents)
                 .SelectMany(x => x)
