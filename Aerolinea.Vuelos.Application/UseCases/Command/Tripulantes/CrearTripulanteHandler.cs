@@ -25,18 +25,21 @@ namespace Aerolinea.Vuelos.Application.UseCases.Command.Tripulantes {
         public async Task<ResulService> Handle(CrearTripulanteCommand request, CancellationToken cancellationToken) {
             try {
 
-
+                //DEBERIA ESTAR FACTORY
                 TripulacionVuelo ObjTripulante = new(request.Detalle.vueloId, request.Detalle.IdGrupo);
 
                 foreach (var item in request.Detalle.tripulacionVuelos) {
                     ObjTripulante.AgregarItem(item.codTripulacion, item.codEmpleado, item.estado, item.activo, request.Detalle.vueloId, request.Detalle.IdGrupo);
-
-
-
                 }
 
-                await _tripulacionVuelo.CreateAsync(ObjTripulante);
-                //ObjTripulante.ConsolidarTripulantes(request.Detalle.vueloId);
+                ObjTripulante.ConsolidarTripulantes(request.Detalle.vueloId);
+
+                //ICollection<TripulacionVuelo> objList = new Collection<TripulacionVuelo>();
+                //TripulacionVuelo objPruebas = new TripulacionVuelo();
+                //objPruebas.codGrupo = request.Detalle.IdGrupo;
+
+                await _tripulacionVuelo.SaveDetalleAsync(ObjTripulante._tripulacionVuelos);
+
 
                 Vuelo objVuelo = await _vueloRepository.FindByIdAsync(request.Detalle.vueloId);
 

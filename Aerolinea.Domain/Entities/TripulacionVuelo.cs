@@ -18,23 +18,28 @@ namespace Aerolinea.Vuelos.Domain.Entities {
 
 
 
-
-        private readonly ICollection<TripulacionVuelo> _tripulacionVuelos;
+        public readonly ICollection<TripulacionVuelo> _tripulacionBajaVuelos;
+        public readonly ICollection<TripulacionVuelo> _tripulacionAlta;
+        public readonly ICollection<TripulacionVuelo> _tripulacionVuelos;
 
         public IReadOnlyCollection<TripulacionVuelo> tripulacionVuelos {
             get {
                 return new ReadOnlyCollection<TripulacionVuelo>(_tripulacionVuelos.ToList());
             }
         }
+
         public TripulacionVuelo() {
             Id = Guid.NewGuid();
             this._tripulacionVuelos = new List<TripulacionVuelo>();
+            this._tripulacionBajaVuelos = new List<TripulacionVuelo>();
+            this._tripulacionAlta = new List<TripulacionVuelo>();
         }
 
         public TripulacionVuelo(Guid vueloId, string codGrupo) {
             Id = Guid.NewGuid();
             this._tripulacionVuelos = new List<TripulacionVuelo>();
-            //this.vueloId = vueloId;
+            this._tripulacionBajaVuelos = new List<TripulacionVuelo>();
+            this._tripulacionAlta = new List<TripulacionVuelo>();
             this.codGrupo = codGrupo;
         }
 
@@ -48,6 +53,16 @@ namespace Aerolinea.Vuelos.Domain.Entities {
             //this.vueloId = vueloId;
             this.codGrupo = codGrupo;
         }
+
+        internal TripulacionVuelo(Guid idTripulacion, Guid codTripulacion, Guid codEmpleado, string estado, int activo, Guid vueloId, string codGrupo) {
+            this.Id = idTripulacion;
+            this.codTripulacion = codTripulacion;
+            this.codEmpleado = codEmpleado;
+            this.estado = estado;
+            this.activo = activo;
+            this.descripcion = descripcion;
+            this.codGrupo = codGrupo;
+        }
         public void AgregarItem(Guid codTripulacion, Guid codEmpleado, string estadoTri, int activoTri, Guid vueloId, string codGrupo) {
 
             var detalleTripulaciones = _tripulacionVuelos.FirstOrDefault(x => x.codTripulacion == codTripulacion);
@@ -58,22 +73,45 @@ namespace Aerolinea.Vuelos.Domain.Entities {
             else {
                 detalleTripulaciones.ModificarTripulacionVuelo(estadoTri, activoTri);
             }
-            AddDomainEvent(new ItemTripulanteAgregado(codTripulacion, codEmpleado, estadoTri, activoTri, descripcion, vueloId, codGrupo, DateTime.Now));
+
+        }
+
+
+        public void ConsolidarTripulantes(Guid pCodVuelo) {
+            var evento = new TripulanteAsignado(pCodVuelo, codGrupo, this._tripulacionVuelos, DateTime.Now);
+            AddDomainEvent(evento);
         }
         internal void ModificarTripulacionVuelo(string estado, int activo) {
 
             this.estado = estado;
             this.activo = activo;
         }
-        public void ConsolidarTripulantes(Guid pCodVuelo) {
-            var evento = new TripulanteAsignado(pCodVuelo, codGrupo, this._tripulacionVuelos, DateTime.Now);
-            AddDomainEvent(evento);
+
+        public void bajaTripulacion(Guid idTripulacion, Guid codTripulacion, Guid codEmpleado, string estadoTri, int activoTri, string descripcion, Guid vueloId, String codGrupo) {
+            this.Id = idTripulacion;
+            this.codTripulacion = codTripulacion;
+            this.codEmpleado = codEmpleado;
+            this.estado = estadoTri;
+            this.activo = activoTri;
+            this.descripcion = descripcion;
+            this.codGrupo = codGrupo;
+            var evento = new TripulacionVuelo(idTripulacion,  codTripulacion,  codEmpleado, estadoTri, activoTri,  vueloId,  codGrupo);
+            _tripulacionBajaVuelos.Add(evento);
+
         }
-        public void ActualizarCodTripulateVuelo(Guid pCodVuelo, string pcodGrupo) {
-            var evento = new TripulanteAsignado(pCodVuelo, pcodGrupo, this._tripulacionVuelos, DateTime.Now);
-            //Id = pCodVuelo;
-            codGrupo = pcodGrupo;
-            AddDomainEvent(evento);
+
+        public void AltaTripulacion(Guid idTripulacion, Guid codTripulacion, Guid codEmpleado, string estadoTri, int activoTri, string descripcion, Guid vueloId, String codGrupo) {
+            this.Id = idTripulacion;
+            this.codTripulacion = codTripulacion;
+            this.codEmpleado = codEmpleado;
+            this.estado = estadoTri;
+            this.activo = activoTri;
+            this.descripcion = descripcion;
+            this.codGrupo = codGrupo;
+            var evento = new TripulacionVuelo(idTripulacion, codTripulacion, codEmpleado, estadoTri, activoTri, vueloId, codGrupo);
+            _tripulacionAlta.Add(evento);
+
         }
+
     }
 }

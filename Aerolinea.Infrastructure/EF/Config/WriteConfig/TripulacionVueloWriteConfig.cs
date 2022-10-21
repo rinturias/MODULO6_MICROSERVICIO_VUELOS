@@ -35,6 +35,7 @@ namespace Aerolinea.Vuelos.Infrastructure.EF.Config.WriteConfig {
             builder.Ignore(x => x.DomainEvents);
             builder.Ignore(x => x.tripulacionVuelos);
 
+            //builder.Ignore(x => x._tripulacionVuelos);
             // builder.Property(x => x.vueloId)
             //.HasColumnName("vueloId");
 

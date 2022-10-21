@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "waxJH0W1JDWsEWa4BRgrnlOFcPAs2raMaBDvhit1buYodJLDX6OX25KqCIOiYwdtZZGp+8lE7c92JM7v5n+jMw==",
+  "success": true,
+  "projectFilePath": "D:\\DIPLOMADO MICROSERVICIOS\\DIPLOMADO\\MODULO 6\\PROYECTO FINAL DIPLOMADO\\MODULO6_MICROSERVICIO_VUELOS\\Aerolinea.Utils\\Sharedkernel.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Inturias\\.nuget\\packages\\mediatr\\10.0.1\\mediatr.10.0.1.nupkg.sha512",
+    "C:\\Users\\Inturias\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

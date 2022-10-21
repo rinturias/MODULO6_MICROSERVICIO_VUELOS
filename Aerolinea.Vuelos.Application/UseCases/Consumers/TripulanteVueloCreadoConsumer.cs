@@ -39,7 +39,7 @@ namespace Aerolinea.Vuelos.Application.UseCases.Consumers {
 
             };
 
-            CrearTripulanteCommand command = new CrearTripulanteCommand(tripulacionDto);
+            ModificarTripulanteCommand command = new ModificarTripulanteCommand(tripulacionDto);
 
             await _mediator.Send(command);
 

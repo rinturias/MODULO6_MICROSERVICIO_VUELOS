@@ -23,25 +23,13 @@ namespace Aerolinea.Vuelos.Domain.Entities {
 
 
 
-        //private readonly ICollection<TripulacionVuelo> tripulacionVuelos;
-
-        //public IReadOnlyCollection<TripulacionVuelo> DetalleTripilacionVuelos {
-        //    get {
-        //        return new ReadOnlyCollection<TripulacionVuelo>(tripulacionVuelos.ToList());
-        //    }
-        //}
-
-
-
 
         public Vuelo() {
             Id = Guid.NewGuid();
-            //this.tripulacionVuelos = new List<TripulacionVuelo>();
         }
 
         public Vuelo(DateTime horaSalida, DateTime horaLLegada, string estado, PrecioValue precio, DateTime fecha, Guid codRuta, Guid codAeronave, int activo, CantidadValue StockAsientos) {
             Id = Guid.NewGuid();
-            //this.tripulacionVuelos = new List<TripulacionVuelo>();
 
             this.estado = estado;
             this.precio = precio;
